@@ -14,7 +14,7 @@
         $this->make = "Unknown";
         $this->mileage = "Not Registered";
         $this->price = "Unknown";
-        $this->description = "Unavailable";
+        $this->description = "Unavailable"; 
     }
     
     public function __set($name, $value){
