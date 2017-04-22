@@ -12,6 +12,11 @@ if (isset($_GET['search'])) {
         $stmt->bindParam(':yearmade', $_GET['yearmade'], PDO::PARAM_INT);
         $stmt->bindParam(':price', $_GET['price'], PDO::PARAM_INT);
         $stmt->execute();
+       /* 
+        $stmt->bindColumn('make', $make);
+        $stmt->bindColumn(2, $yearmade);
+        */
+        
         $errorInfo = $stmt->errorInfo();
         if (isset($errorInfo[2])) {
             $error = $errorInfo[2];
@@ -61,7 +66,7 @@ if (isset($_GET['search'])) {
 </form>
 <?php if (isset($_GET['search'])) {
     $row = $stmt->fetch();
-    if ($row) {
+    if ($row) {  
     ?>
 <table>
     <tr>

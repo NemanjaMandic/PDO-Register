@@ -8,10 +8,12 @@ if (isset($_GET['search'])) {
                 WHERE make LIKE ? AND yearmade >= ? AND price <= ?
                 ORDER BY price';
         $stmt = $conn->prepare($sql);
+        /*
         $stmt->bindValue(1, '%' . $_GET['make'] . '%');
         $stmt->bindParam(2, $_GET['yearmade'], PDO::PARAM_INT);
         $stmt->bindParam(3, $_GET['price'], PDO::PARAM_INT);
-        $stmt->execute();
+        */
+        $stmt->execute(array( '%' . $_GET['make'] . '%', $_GET['yearmade'], $_GET['price']));
         $errorInfo = $stmt->errorInfo();
         if (isset($errorInfo[2])) {
             $error = $errorInfo[2];
